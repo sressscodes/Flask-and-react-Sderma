@@ -1,0 +1,87 @@
+  /* Full-screen background overlay */
+.login-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent white */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+/* Centered popup content */
+.login-popup-content {
+    width: 400px;
+    height: 90px;
+    background: white; /* Solid white */
+    padding: 40px 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    position: relative;
+}
+
+.login-popup-content h3 {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.login-popup-content h3 span {
+    color: #2686F9;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 14px;
+}
+
+.button-login{
+    width: 120px; 
+    height: 40px; 
+    outline: none;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 16px; 
+    font-weight: 500; 
+    background-color: #2686F9;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.button-back{
+    width: 120px; 
+    height: 40px; 
+    outline: none;
+    border: 1px solid #2686F9;
+    border-radius: 10px;
+    color: #2686F9;
+    font-size: 16px; 
+    font-weight: 500; 
+    background-color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.button-back:hover{
+    border: none;
+    background-color: #7b7b7b;
+    color: #ffffff;
+}

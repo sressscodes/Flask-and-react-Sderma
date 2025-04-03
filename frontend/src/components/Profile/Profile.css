@@ -1,0 +1,98 @@
+.profile-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .content {
+    padding: 40px;
+    width: 70%;
+    margin: auto auto auto 20%;
+  }
+  
+  .profile-details {
+    width: 100%;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
+    text-align: left;
+  }
+
+  .profile-icon {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #83bbff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .profile-icon img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+
+  .icon-style {
+    width: 40%;
+    height: 40%;
+    color: rgb(255, 255, 255); /* Change 'red' to any color you want */
+  }
+  
+  .profile-details h1 {
+    color: #2686F9;
+    margin-bottom: 15px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .profile-details p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  
+  .profile-details strong {
+    color: #333;
+  }
+  
+  /* My Visits section */
+  .visit-history {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .visit-history h1 {
+    color: #007bff;
+    margin-bottom: 20px;
+  }
+  
+  .visit-history p {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .profile-container {
+      flex-direction: column;
+    }
+  
+    .sidebar {
+      width: 100%;
+      height: auto;
+      padding: 10px;
+    }
+  
+    .content {
+      padding: 20px;
+    }
+  
+    .profile-details {
+      max-width: 100%;
+    }
+  }

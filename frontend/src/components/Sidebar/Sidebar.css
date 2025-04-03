@@ -1,0 +1,41 @@
+.sidebar {
+    width: 14%;
+    background-color:rgb(0, 0, 0);
+    padding: 20px;
+    height: 100vh;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    color: #ffffff;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar li {
+    padding: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .sidebar li:hover,
+  .sidebar .active {
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+  
+  .sidebar .reset:hover {
+    background-color: #2686F9;
+    color: #ffffff;
+  }
+  
+  .sidebar .logout {
+    color: red;
+    font-weight: bold;
+  }
+
+  .sidebar .logout:hover {
+    background-color: red;
+    color: #ffffff;
+  }
+  

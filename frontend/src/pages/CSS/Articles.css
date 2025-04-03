@@ -1,0 +1,116 @@
+/* Welcome Section */
+.main-container {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f8f9fa;
+    gap: 40px;
+}
+
+.welcome-section {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    text-align: center;
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  .welcome-section h1 {
+    width: 100%;
+    text-align: center;
+    font-size: 32px;
+    line-height: 42px;
+    font-weight: bold;
+    color: #333;
+    padding: 0;
+  }
+  
+  /* Search Bar */
+  .search-bar {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin: auto;
+  }
+  
+  .search-bar input {
+    width: 600px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    margin-bottom: 0 !important;
+  }
+  
+  .search-bar input:focus {
+    border-color: #007bff;
+  }
+  
+  .search-bar .search-button {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+  }
+  
+  .search-bar .search-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /*Topics Section */
+  .topics-section {
+    color: #000000;
+    text-align: center;
+    padding: 20px 0;
+    margin: 0;
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .article-card {
+    width: 300px;
+    background-color: #f8f8f8;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .article-card h3 {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 600;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .article-card img {
+    max-width: 100%;
+    height: 200px;
+    border-radius: 8px;
+  }
+  
+  .article-card p {
+    font-size: 0.95rem;
+    color: #666;
+  }
+  
+  .article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
