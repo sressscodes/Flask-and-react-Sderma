@@ -1,4 +1,0 @@
-flask
-gunicorn
-flask-cors  # If handling CORS
-python-dotenv  # If using .env
