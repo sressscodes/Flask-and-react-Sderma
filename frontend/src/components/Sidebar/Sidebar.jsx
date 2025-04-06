@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Sidebar.css";
 
-const Sidebar = ({ activeSection, setActiveSection, handleResetProfile, handleLogout }) => {
+const Sidebar = ({ activeSection, setActiveSection, handleResetProfile, logout }) => {
   const [role, setRole] = useState("");
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const Sidebar = ({ activeSection, setActiveSection, handleResetProfile, handleLo
           </li>
         )}
         <li className="reset" onClick={handleResetProfile}>Reset Profile</li>
-        <li className="logout" onClick={handleLogout}>Logout</li>
+        <li className="logout" onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>Logout</li>
       </ul>
     </div>
   );

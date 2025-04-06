@@ -8,7 +8,7 @@ import twitter from '../../assets/twitter-icon.png'
 import linkedin from '../../assets/linkedin-icon.png'
 
 
-const Footer = () => {
+const Footer = ({ handleProtectedNavigation }) => {
   return (
     <div>
       <footer className="footer-section">
@@ -22,8 +22,8 @@ const Footer = () => {
             <ul>
               <li><Link to="/">Home</Link></li>
               <li><Link to="/articles">Articles</Link></li>
-              <li><Link to="/getrecommendations">Get Recommendations</Link></li>
-              <li><Link to='/booknow'>Book Now</Link></li>
+              <li onClick={() => { handleProtectedNavigation("/getrecommendations"); }}><span>Get Recommendations</span></li>
+              <li onClick={() => { handleProtectedNavigation("/booknow"); }} ><span>Book Now</span></li>
               <li><Link to='/'>FAQs</Link></li>
             </ul>
           </div>

@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
 import "./Profile.css";
 
-const ProfilePatient = ({ user }) => {
+const ProfilePatient = ({ user, logout }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { name } = location.state || {};
@@ -18,13 +18,9 @@ const ProfilePatient = ({ user }) => {
     navigate("/");
   };
 
-  const handleLogout = () => {
-    navigate("/"); // Adjust this to actual logout logic if needed
-  };
-
   return (
     <div className="profile-container">
-      <Sidebar activeSection={activeSection} setActiveSection={setActiveSection} handleResetProfile={handleResetProfile} handleLogout={handleLogout} />
+      <Sidebar activeSection={activeSection} setActiveSection={setActiveSection} handleResetProfile={handleResetProfile} logout={logout} />
       <div className="content">
         {activeSection === "profile" && (
           <div className="profile-details">

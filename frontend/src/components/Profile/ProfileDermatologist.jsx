@@ -4,7 +4,7 @@ import { FaUserMd } from 'react-icons/fa';
 import './Profile.css';
 import Sidebar from '../Sidebar/Sidebar';
 
-const ProfileDermatologist = () => {
+const ProfileDermatologist = ({ logout }) => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const location = useLocation();
@@ -36,17 +36,13 @@ const ProfileDermatologist = () => {
     navigate('/');
   };
 
-  const handleLogout = () => {
-    navigate("/");
-  };
-
   return (
     <div className="profile-container">
       <Sidebar
         activeSection={activeSection}
         setActiveSection={setActiveSection}
         handleResetProfile={handleResetProfile}
-        handleLogout={handleLogout}
+        logout={logout}
       />
       
       <div className="content">

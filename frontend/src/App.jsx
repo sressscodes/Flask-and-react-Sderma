@@ -23,14 +23,30 @@ function App() {
 function AppContent() {
   const [menu, setMenu] = useState("homepage");
   const [showLoginPopup, setShowLoginPopup] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
   const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0();
   const location = useLocation(); 
+  const navigate = useNavigate();
 
   const handleProtectedNavigation = (navigate, path) => {
     if (isAuthenticated) {
       navigate(path);
     } else {
       setShowLoginPopup(true);
+    }
+  };
+
+  const handleProfileClick = () => {
+    const storedProfile = JSON.parse(localStorage.getItem('userProfile'));
+
+    if (storedProfile) {
+      if (storedProfile.role === 'patient') {
+        navigate('/profilepatient', { state: { name: storedProfile.name } });
+      } else if (storedProfile.role === 'dermatologist') {
+        navigate('/profiledermatologist', { state: { name: storedProfile.name, id: storedProfile.id } });
+      }
+    } else {
+      setIsProfileOpen(true);
     }
   };
 
@@ -52,11 +68,11 @@ function AppContent() {
         <Route path='/articles' element={<Articles />} />
         <Route path='/getrecommendations' element={<GetRecommendations />} />
         <Route path='/booknow' element={<BookNow />} />
-        <Route path='/profiledermatologist' element={<ProfileDermatologist />} />
-        <Route path='/profilepatient' element={<ProfilePatient user={user} />} />
+        <Route path='/profiledermatologist' element={<ProfileDermatologist logout={logout} handleProfileClick={handleProfileClick} isProfileOpen={isProfileOpen}/>} />
+        <Route path='/profilepatient' element={<ProfilePatient user={user} logout={logout} handleProfileClick={handleProfileClick} isProfileOpen={isProfileOpen} />} />
       </Routes>
 
-      {!hideFooterPages.includes(location.pathname) && <Footer />}
+      {!hideFooterPages.includes(location.pathname) && <Footer handleProtectedNavigation={(path) => handleProtectedNavigation(navigate, path)} />}
 
       {showLoginPopup && <LoginPopup setShowLoginPopup={setShowLoginPopup} loginWithRedirect={loginWithRedirect} />}
     </>
