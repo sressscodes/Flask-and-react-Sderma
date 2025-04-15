@@ -73,9 +73,10 @@ const ProfilePatient = ({ user, logout }) => {
                 {bookings.map((b) => (
                   <div key={b.id} className="booking-card">
                     <div className="booking-header">
-                      <h3>You booked {b.doctor || 'a doctor'}</h3>
+                      <h3>You booked <strong>{b.doctor || 'a doctor'}</strong> </h3>
                       <span className="booking-status">Confirmed</span>
                     </div>
+                    <hr/>
                     <div className="booking-details">
                       <p><strong>Date:</strong> {b.date}</p>
                       <p><strong>Time:</strong> {b.time}</p>

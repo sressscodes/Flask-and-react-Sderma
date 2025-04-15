@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import './CSS/HomePage.css';
 import image10 from '../assets/image10.png'
-import image1 from '../assets/image1.png'
+import firstimage from '../assets/firstimage.png'
 import image2 from '../assets/image2.png'
 import image3 from '../assets/image3.png'
 import image4 from '../assets/image4.png'
-import image21 from '../assets/image21.png'
+import dermanearyou from '../assets/dermanearyou.png'
+import dermaapprevedskincare from '../assets/dermaapprevedskincare.png'
+import eduhub from '../assets/eduhub.png'
 import { FaChevronRight} from 'react-icons/fa';
 
 const StarRating = ({ rating }) => {
@@ -26,10 +28,10 @@ const HomePage = ({ handleProtectedNavigation, setMenu, menu }) => {
   const navigate = useNavigate();
 
   const dermatologists = [
-    { name: "Dr. John Doe", image: image2 },
-    { name: "Dr. Jane Smith", image: image3 },
-    { name: "Dr. Emily Johnson", image: image4 },
-    { name: "Dr. Emily Johnson", image: image10 }
+    { name: "Dr. Kiran Sharma", image: image2 },
+    { name: "Dr. Elina Basnet", image: image3 },
+    { name: "Dr. Manoj Rai", image: image4 },
+    { name: "Dr. Himal Thapa", image: image10 }
   ];
 
   const testimonials = [
@@ -108,7 +110,7 @@ const HomePage = ({ handleProtectedNavigation, setMenu, menu }) => {
             {menu === "booknow" ? <hr /> : null}
           </li>
         </div>
-        <img src={image1} alt="Showcase" className="hero-image" />
+        <img src={firstimage} alt="Showcase" className="hero-image" />
       </section>
 
       <section className="section-topderma">
@@ -132,16 +134,16 @@ const HomePage = ({ handleProtectedNavigation, setMenu, menu }) => {
             <h2>Find a Dermatologist Near You</h2>
             <p>Your skin deserves the best care. Our platform connects you with highly skilled dermatologists across
               multiple locations, ensuring expert advice is just a few clicks away.</p>
-              <li onClick={() => {setMenu("booknow"); handleProtectedNavigation(navigate, "/booknow");}} className="home-book-now-btn" >
+              <li onClick={() => {setMenu("all-dermatologists"); handleProtectedNavigation(navigate, "/all-dermatologists");}} className="home-book-now-btn" >
             Find Here
-            {menu === "booknow" ? <hr /> : null}
+            {menu === "all-dermatologists" ? <hr /> : null}
           </li>
           </div>
-          <img src={image21} alt="Dermatologist performing a procedure"/>
+          <img src={dermanearyou} alt="Dermatologist performing a procedure"/>
       </section>
 
       <section className="skincare-products">
-        <img src={image21} alt="Dermatologist Approved Skincare"/>
+        <img src={dermaapprevedskincare} alt="Dermatologist Approved Skincare"/>
         <div className="text-container">
           <h2>Shop Dermatologist Approved Skincare</h2>
           <p>Shop dermatologist-approved skincare for every skin type. Our clinically-tested products target acne, aging,
@@ -158,9 +160,12 @@ const HomePage = ({ handleProtectedNavigation, setMenu, menu }) => {
           <h2>Skincare Education Hub</h2>
           <p>Learn from top dermatologists with our Skincare Education Hub. Access articles, videos, and tutorials on skin
           types, ingredients, and routines. Stay informed on the latest skincare trends and treatment options.</p>
-          <Link to="/book_now" className="home-book-now-btn">Find Here</Link>
+          <li onClick={() => {setMenu("articles"); handleProtectedNavigation(navigate, "/articles");}} className="home-book-now-btn" >
+            Find Here
+            {menu === "articles" ? <hr /> : null}
+          </li>
         </div>
-        <img src={image21} alt="Education Hub"/>
+        <img src={eduhub} alt="Education Hub"/>
       </section>
 
       <section className="section-userreviews">

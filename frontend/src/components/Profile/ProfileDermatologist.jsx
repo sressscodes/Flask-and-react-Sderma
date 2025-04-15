@@ -124,8 +124,10 @@ const ProfileDermatologist = ({ user, logout }) => {
         )}
 
         {activeSection === "visits" && (
-          <div className="bookings-section">
-            <h2>My Appointments</h2>
+          <div className="dashboard-container">
+            <div className="dashboard-header">
+              <h1>My Visits</h1>
+            </div>
             {bookings.length === 0 ? (
               <p className="no-bookings">No appointments found.</p>
             ) : (
@@ -133,9 +135,10 @@ const ProfileDermatologist = ({ user, logout }) => {
                 {bookings.map((booking) => (
                   <div key={booking.id} className="booking-card">
                     <div className="booking-header">
-                      <h3>Appointment with {booking.name}</h3>
+                      <h3>Appointment with <strong>{booking.name}</strong></h3>
                       <span className="booking-status">Confirmed</span>
                     </div>
+                    <hr />
                     <div className="booking-details">
                       <p><strong>Email:</strong> {booking.email}</p>
                       <p><strong>Date:</strong> {formatDate(booking.date)}</p>

@@ -77,7 +77,7 @@ const BookNow = () => {
         timestamp: serverTimestamp()
       });
 
-      setConfirmationMessage(' Your booking has been submitted!');
+      setConfirmationMessage('✅ Your booking has been submitted!');
       setFormData({
         name: '',
         email: '',
@@ -96,6 +96,11 @@ const BookNow = () => {
 
   return (
     <div className="book-now-container">
+      {confirmationMessage && (
+            <div className="confirmation-popup">
+              {confirmationMessage}
+            </div>
+          )}
       <div className="book-now-header">
         <h1>Book Your Appointment</h1>
         <p>Schedule a consultation with our expert dermatologists</p>
@@ -103,12 +108,6 @@ const BookNow = () => {
 
       <div className="booking-form-container">
         <form onSubmit={handleSubmit} className="booking-form">
-          {confirmationMessage && (
-            <div className="confirmation-message">
-              {confirmationMessage}
-            </div>
-          )}
-
           <div className="form-group">
             <label htmlFor="name">Full Name</label>
             <input

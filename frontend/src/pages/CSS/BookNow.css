@@ -1,88 +1,87 @@
 /* BookNow.css */
 .book-now-container {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 2rem;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+  padding: 40px;
+  background-color: #f7faff;
   min-height: 100vh;
-  animation: fadeIn 0.5s ease-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
 }
 
 .book-now-header {
-  text-align: center;
-  margin-bottom: 3rem;
-  padding: 2rem;
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.book-now-header-row {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
+  flex-direction: column;
+  width: 70%;
+  text-align: center;
+  justify-content: center;
+  gap: 20px;
 }
 
-.book-now-header-row h1 {
-  font-size: 2.5rem;
-  color: #2c3e50;
-  font-weight: 700;
-  margin: 0;
+.book-now-header h1 {
+  width: 100%;
+  text-align: center;
+  font-size: 32px;
+  line-height: 42px;
+  font-weight: bold;
+  color: #333;
+  padding: 0;
 }
 
-.book-now-header-row p {
-  font-size: 1.2rem;
-  color: #7f8c8d;
-  font-weight: 500;
-  margin: 0;
+.book-now-header p {
+  font-size: 0.95rem;
+    color: #666;
 }
 
 .booking-form-container {
   display: flex;
-  gap: 2rem;
-  background: white;
-  padding: 2.5rem;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  flex-direction: row;
+  background-color: #ffffff;
+  box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.03);
+  padding: 20px 40px;
+  border-radius: 8px;
+  height: 100%;
+  gap: 80px;
 }
 
 .booking-form {
-  flex: 2;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 10px;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
 }
 
-.form-group label {
-  font-weight: 600;
-  color: #2c3e50;
-  font-size: 0.95rem;
+.booking-form .form-group label {
+  font-size: 16px;
+  margin: 10px 0 5px;
+  font-weight: 500;
+  text-wrap: none;
+  width: 100%;
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
-  padding: 1rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  background: #f8f9fa;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #3498db;
+  border-color: #007bff;
   background: white;
   box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
 }
@@ -97,30 +96,26 @@
 }
 
 .submit-booking-btn {
-  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
-  color: white;
-  padding: 1.2rem;
-  border: none;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 1rem;
-  box-shadow: 0 4px 6px rgba(52, 152, 219, 0.2);
-}
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+  }
 
 .submit-booking-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 8px rgba(52, 152, 219, 0.3);
+  background-color: #1e6fe6;
 }
 
 .booking-info {
   flex: 1;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background-color: #e2f0ff;
   padding: 2rem;
   border-radius: 12px;
-  border-left: 4px solid #3498db;
+  border-left: 4px solid #007bff;
 }
 
 .booking-info h3 {
@@ -136,6 +131,8 @@
 }
 
 .booking-info li {
+  font-size: 16px;
+  font-weight: 500px;
   margin-bottom: 1.2rem;
   padding-left: 1.8rem;
   position: relative;
@@ -145,10 +142,30 @@
 
 .booking-info li::before {
   content: "\2713";
-  color: #3498db;
+  color: #31aa31;
   position: absolute;
   left: 0;
-  font-weight: bold;
+  font-weight: bolder;
+}
+
+.confirmation-popup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #4caf50;
+  color: white;
+  padding: 16px 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 9999;
+  animation: fadeInOut 5s ease-in-out forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-10px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
 }
 
 @media (max-width: 768px) {

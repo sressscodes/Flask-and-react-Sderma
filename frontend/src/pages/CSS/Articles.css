@@ -1,17 +1,17 @@
 /* Welcome Section */
 .main-container {
-    margin-top: 40px;
+    padding: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #f8f9fa;
+    background-color: #f7faff;
     gap: 40px;
 }
 
 .welcome-section {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 70%;
     text-align: center;
     justify-content: center;
     gap: 30px;
@@ -29,7 +29,7 @@
   
   /* Search Bar */
   .search-bar {
-    width: 70%;
+    width: 55%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -41,11 +41,11 @@
     width: 600px;
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #ddd;
     border-radius: 4px;
     outline: none;
     transition: border-color 0.3s ease;
     margin-bottom: 0 !important;
+    background-color: #ffffff;
   }
   
   .search-bar input:focus {
@@ -82,8 +82,8 @@
 
   .article-card {
     width: 300px;
-    background-color: #f8f8f8;
-    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+    box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.03);
     padding: 20px;
     border-radius: 10px;
     display: flex;
@@ -112,5 +112,5 @@
   
   .article-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1);
   }
