@@ -7,10 +7,13 @@ import Articles from './pages/Articles';
 import GetRecommendations from './pages/GetRecommendation';
 import BookNow from './pages/BookNow';
 import Navbar from './components/Navbar/Navbar';
-import Footer from './components/footer/footer';
+import Footer from './components/Footer/Footer';
 import LoginPopup from './components/LoginPopup/LoginPopup';
 import ProfileDermatologist from './components/Profile/ProfileDermatologist';
 import ProfilePatient from './components/Profile/ProfilePatient';
+import "./uploadToFirestore";
+import Dashboard from './components/Dashboard/Dashboard';
+import AllDermatologists from "./components/AllDermatologists/AllDermatologists";
 
 function App() {
   return (
@@ -70,6 +73,8 @@ function AppContent() {
         <Route path='/booknow' element={<BookNow />} />
         <Route path='/profiledermatologist' element={<ProfileDermatologist logout={logout} handleProfileClick={handleProfileClick} isProfileOpen={isProfileOpen}/>} />
         <Route path='/profilepatient' element={<ProfilePatient user={user} logout={logout} handleProfileClick={handleProfileClick} isProfileOpen={isProfileOpen} />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/all-dermatologists" element={<AllDermatologists />} />
       </Routes>
 
       {!hideFooterPages.includes(location.pathname) && <Footer handleProtectedNavigation={(path) => handleProtectedNavigation(navigate, path)} />}
@@ -80,6 +85,7 @@ function AppContent() {
 }
 
 function NavbarWrapper(props) {
+  
   const navigate = useNavigate();
   return <Navbar {...props} handleProtectedNavigation={(path) => props.handleProtectedNavigation(navigate, path)} />;
 }

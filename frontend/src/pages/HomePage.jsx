@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import './CSS/HomePage.css';
 import image10 from '../assets/image10.png'
 import image1 from '../assets/image1.png'
@@ -7,6 +7,7 @@ import image2 from '../assets/image2.png'
 import image3 from '../assets/image3.png'
 import image4 from '../assets/image4.png'
 import image21 from '../assets/image21.png'
+import { FaChevronRight} from 'react-icons/fa';
 
 const StarRating = ({ rating }) => {
   return (
@@ -85,6 +86,18 @@ const HomePage = ({ handleProtectedNavigation, setMenu, menu }) => {
     },
   ];
 
+  // to navigate FAQ directly from footer
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.scrollToFaq) {
+      const section = document.querySelector(".faq-section");
+      setTimeout(() => {
+        section?.scrollIntoView({ behavior: 'smooth' });
+      }, 100); // slight delay to ensure DOM is ready
+    }
+  }, [location]);
+
   return (
     <div className="w-full">
       <section className="hero-section">
@@ -107,7 +120,10 @@ const HomePage = ({ handleProtectedNavigation, setMenu, menu }) => {
               <p>{derma.name}</p>
             </div>
           ))}
-          <Link to="/book_now" className="view-all-link">View all</Link>
+          <Link to="/all-dermatologists" className="view-all-link">
+            View All
+            <FaChevronRight />
+          </Link>
         </div>
       </section>
 

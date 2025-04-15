@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './Navbar.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import ProfileForm from '../ProfileForm/ProfileForm';
 
@@ -17,6 +17,7 @@ const Navbar = ({
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const popupRef = useRef(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   // Close the popup when clicking outside
   useEffect(() => {
@@ -50,25 +51,26 @@ const Navbar = ({
     <div className='navbar'>
       <div className="nav-logo">
         <Link to='/'>
-  <img src={logo} alt='logo' />
-</Link>
+          <img src={logo} alt='logo' />
+        </Link>
       </div>
+
       <div className="nav-menu">
-        <li onClick={() => setMenu("homepage")}>
+        <li>
           <Link style={{ textDecoration: 'none', color: '#1c1c1c' }} to='/'>Home</Link>
-          {menu === "homepage" ? <hr /> : null}
+          {location.pathname === '/' ? <hr /> : null}
         </li>
-        <li onClick={() => setMenu("articles")}>
+        <li>
           <Link style={{ textDecoration: 'none', color: '#1c1c1c' }} to='/articles'>Articles</Link>
-          {menu === "articles" ? <hr /> : null}
+          {location.pathname === '/articles' ? <hr /> : null}
         </li>
-        <li onClick={() => { setMenu("booknow"); handleProtectedNavigation("/booknow"); }}>
+        <li onClick={() => handleProtectedNavigation("/booknow")}>
           <span style={{ textDecoration: 'none', color: '#1c1c1c', cursor: 'pointer' }}>Book Now</span>
-          {menu === "booknow" ? <hr /> : null}
+          {location.pathname === '/booknow' ? <hr /> : null}
         </li>
-        <li onClick={() => { setMenu("getrecommendations"); handleProtectedNavigation("/getrecommendations"); }}>
+        <li onClick={() => handleProtectedNavigation("/getrecommendations")}>
           <span style={{ textDecoration: 'none', color: '#1c1c1c', cursor: 'pointer' }}>Get Recommendations</span>
-          {menu === "getrecommendations" ? <hr /> : null}
+          {location.pathname === '/getrecommendations' ? <hr /> : null}
         </li>
       </div>
 

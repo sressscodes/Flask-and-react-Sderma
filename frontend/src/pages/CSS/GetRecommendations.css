@@ -6,7 +6,7 @@
   height: 76vh;
   margin: auto;
   padding: 40px 40px;
-  background-color: #fff;
+  background-color: #f5f7ff  ;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -29,6 +29,7 @@ h4 {
 
 /* Form Styling */
 #recommendation-form {
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
@@ -70,6 +71,7 @@ button:hover {
 
 /* Output Section */
 #output {
+  background-color: #ffffff;
   width: 1200px;
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
   border-radius: 8px;

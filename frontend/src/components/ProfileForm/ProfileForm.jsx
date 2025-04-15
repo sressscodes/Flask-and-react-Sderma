@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ProfileForm.css';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../../firebase'; // Adjust this path based on your structure
 
 const ProfileForm = ({ setIsProfileOpen }) => {
   const [data, setData] = useState([]);
@@ -16,18 +18,18 @@ const ProfileForm = ({ setIsProfileOpen }) => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/dermatologists');
-      const jsonData = await response.json();
-      setData(jsonData);
+      const snapshot = await getDocs(collection(db, 'dermatologists'));
+      const dermatologistData = snapshot.docs.map(doc => doc.data());
+      setData(dermatologistData);
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error fetching dermatologists from Firebase:', error);
     }
   };
 
   useEffect(() => {
     if (role === "dermatologist") {
       const match = data.find(
-        (d) => d["Dermatologist ID"].toString() === id && d.Name.toLowerCase() === name.toLowerCase()
+        (d) => d["Dermatologist ID"]?.toString() === id && d.Name?.toLowerCase() === name?.toLowerCase()
       );
       setIsVerified(!!match);
     }
@@ -77,18 +79,37 @@ const ProfileForm = ({ setIsProfileOpen }) => {
           {role === "patient" && (
             <div className="form-group">
               <label>Name:</label>
-              <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter your name" />
-              <button onClick={handleCreateProfile} disabled={!name.trim()}>Open Profile</button>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Enter your name"
+              />
+              <button onClick={handleCreateProfile} disabled={!name.trim()}>
+                Open Profile
+              </button>
             </div>
           )}
 
           {role === "dermatologist" && (
             <div className="form-group">
               <label>ID:</label>
-              <input type="text" value={id} onChange={(e) => setId(e.target.value)} placeholder="Enter your ID" />
+              <input
+                type="text"
+                value={id}
+                onChange={(e) => setId(e.target.value)}
+                placeholder="Enter your ID"
+              />
               <label>Name:</label>
-              <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter your name" />
-              <button onClick={handleCreateProfile} disabled={!isVerified}>Open Profile</button>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Enter your name"
+              />
+              <button onClick={handleCreateProfile} disabled={!isVerified}>
+                Open Profile
+              </button>
             </div>
           )}
         </div>
