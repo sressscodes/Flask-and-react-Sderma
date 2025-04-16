@@ -12,7 +12,6 @@ import {
 import { db } from '../firebase';
 
 const BookNow = () => {
-
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -25,12 +24,13 @@ const BookNow = () => {
 
   const [doctors, setDoctors] = useState([]);
   const [confirmationMessage, setConfirmationMessage] = useState('');
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
         const doctorsRef = collection(db, 'dermatologists');
-        const q = query(doctorsRef, limit(50)); //  Limit to 50
+        const q = query(doctorsRef, limit(50)); // Limit to 50
         const snapshot = await getDocs(q);
 
         const rawDoctors = snapshot.docs.map(doc => ({
@@ -38,7 +38,7 @@ const BookNow = () => {
           name: doc.data().Name || doc.data().name
         }));
 
-        //  Remove duplicates by name
+        // Remove duplicates by name
         const uniqueDoctors = rawDoctors.filter(
           (doc, index, self) =>
             index === self.findIndex(d => d.name === doc.name)
@@ -46,7 +46,7 @@ const BookNow = () => {
 
         setDoctors(uniqueDoctors);
       } catch (error) {
-        console.error(' Error fetching doctors:', error);
+        console.error('Error fetching doctors:', error);
       }
     };
 
@@ -60,6 +60,10 @@ const BookNow = () => {
     }
   }, [confirmationMessage]);
 
+  const validateName = (name) => /^[a-zA-Z\s]+$/.test(name);
+  const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const validatePhone = (phone) => /^(98|97|96)\d{8}$/.test(phone);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -71,12 +75,23 @@ const BookNow = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const newErrors = {};
+    if (!validateName(formData.name)) newErrors.name = 'Name should not contain special characters.';
+    if (!validateEmail(formData.email)) newErrors.email = 'Please enter a valid email.';
+    if (!validatePhone(formData.phone)) newErrors.phone = 'Enter a valid Nepali phone number.';
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
     try {
       await addDoc(collection(db, 'bookings'), {
         ...formData,
         timestamp: serverTimestamp()
       });
 
+      setErrors({});
       setConfirmationMessage('✅ Your booking has been submitted!');
       setFormData({
         name: '',
@@ -87,20 +102,33 @@ const BookNow = () => {
         concern: '',
         doctor: ''
       });
-
     } catch (error) {
-      console.error(' Failed to submit booking:', error);
+      console.error('Failed to submit booking:', error);
       alert('Something went wrong. Please try again.');
     }
+  };
+
+  const generateTimeSlots = () => {
+    const slots = [];
+    for (let hour = 9; hour <= 17; hour++) {
+      for (let min = 0; min < 60; min += 30) {
+        const h12 = hour % 12 === 0 ? 12 : hour % 12;
+        const ampm = hour < 12 ? 'AM' : 'PM';
+        const label = `${h12}:${min === 0 ? '00' : min} ${ampm}`;
+        const value = `${hour.toString().padStart(2, '0')}:${min === 0 ? '00' : '30'}`;
+        slots.push({ label, value });
+      }
+    }
+    return slots;
   };
 
   return (
     <div className="book-now-container">
       {confirmationMessage && (
-            <div className="confirmation-popup">
-              {confirmationMessage}
-            </div>
-          )}
+        <div className="confirmation-popup">
+          {confirmationMessage}
+        </div>
+      )}
       <div className="book-now-header">
         <h1>Book Your Appointment</h1>
         <p>Schedule a consultation with our expert dermatologists</p>
@@ -119,6 +147,7 @@ const BookNow = () => {
               required
               placeholder="Enter your full name"
             />
+            {errors.name && <span className="error-text">{errors.name}</span>}
           </div>
 
           <div className="form-group">
@@ -132,6 +161,7 @@ const BookNow = () => {
               required
               placeholder="Enter your email"
             />
+            {errors.email && <span className="error-text">{errors.email}</span>}
           </div>
 
           <div className="form-group">
@@ -145,6 +175,7 @@ const BookNow = () => {
               required
               placeholder="Enter your phone number"
             />
+            {errors.phone && <span className="error-text">{errors.phone}</span>}
           </div>
 
           <div className="form-group">
@@ -178,14 +209,18 @@ const BookNow = () => {
 
             <div className="form-group">
               <label htmlFor="time">Preferred Time</label>
-              <input
-                type="time"
+              <select
                 id="time"
                 name="time"
                 value={formData.time}
                 onChange={handleChange}
                 required
-              />
+              >
+                <option value="">Select a time</option>
+                {generateTimeSlots().map((time) => (
+                  <option key={time.value} value={time.value}>{time.label}</option>
+                ))}
+              </select>
             </div>
           </div>
 

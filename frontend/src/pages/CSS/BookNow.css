@@ -150,7 +150,7 @@
 
 .confirmation-popup {
   position: fixed;
-  top: 20px;
+  bottom: 20px;
   right: 20px;
   background-color: #4caf50;
   color: white;
@@ -159,6 +159,13 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   z-index: 9999;
   animation: fadeInOut 5s ease-in-out forwards;
+}
+
+.error-text {
+  color: red;
+  font-size: 0.85rem;
+  margin-top: 4px;
+  display: block;
 }
 
 @keyframes fadeInOut {
