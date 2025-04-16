@@ -32,12 +32,13 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 20px;
   }
 
   .modal-content h3 {
     font-size: 18px;
     font-weight: 600;
+    color: #333;
   }
   
   .close-btn {
@@ -53,17 +54,17 @@
   
   .role-selection {
     display: flex;
-    justify-content: space-between;
-    width: 70%;
-    align-items: center;
-    margin: auto;
+    justify-content: center;
+    gap: 40px; /* Gives space between radio groups */
+    margin: 10px auto;
   }
-
+  
   .role-selection label {
-    font-size: 16px;
     display: flex;
-    align-items: left;
-    width: 100%;
+    align-items: center;
+    gap: 4px; /* Space between radio and text */
+    font-size: 16px;
+    color: #333;
   }
   
   .role-selection input {
@@ -88,11 +89,12 @@
   .form-group label {
     width: 14%;
     font-size: 14px;
-    font-weight: 400;
+    font-weight: 500;
     display: flex;
     justify-content: start;
     text-align: left;
     padding-left: 10px;
+    color: #333;
   }
   
   .form-group input {

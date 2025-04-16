@@ -32,18 +32,29 @@ const Navbar = ({
     };
   }, []);
 
-  // Handle Profile Click
+  useEffect(() => {
+    if (user) {
+      console.log("🧑‍💻 Logged-in user data:", user);
+    }
+  }, [user]);
+
+  // Handle Profile Click with email check
   const handleProfileClick = () => {
+    const currentEmail = user?.email;
     const storedProfile = JSON.parse(localStorage.getItem('userProfile'));
 
-    if (storedProfile) {
+    // If new user or no stored profile, show profile form
+    if (!storedProfile || storedProfile.email !== currentEmail) {
+      localStorage.removeItem('userProfile');
+      setIsProfileOpen(true);
+    } else {
       if (storedProfile.role === 'patient') {
         navigate('/profilepatient', { state: { name: storedProfile.name } });
       } else if (storedProfile.role === 'dermatologist') {
-        navigate('/profiledermatologist', { state: { name: storedProfile.name, id: storedProfile.id } });
+        navigate('/profiledermatologist', {
+          state: { name: storedProfile.name, id: storedProfile.id },
+        });
       }
-    } else {
-      setIsProfileOpen(true);
     }
   };
 
@@ -80,7 +91,7 @@ const Navbar = ({
         </div>
       ) : (
         <div className="profile">
-          <p>Hi {user?.given_name || "User "}</p>
+          <p>Hi {user?.given_name || user?.nickname || "User"}</p>
           <img 
             src={user?.picture || "default-profile.png"} 
             alt='profile-icon' 
@@ -94,7 +105,10 @@ const Navbar = ({
                   <img src={user?.picture || "default-profile.png"} alt='profile-icon' />
                   <p>{user?.email}</p>
                 </div>
-                <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>Log Out</button>
+                <button onClick={() => {
+                  localStorage.removeItem('userProfile'); // optional, clear profile on logout
+                  logout({ logoutParams: { returnTo: window.location.origin } });
+                }}>Log Out</button>
               </div>
             </div>
           )}

@@ -12,7 +12,6 @@ import LoginPopup from './components/LoginPopup/LoginPopup';
 import ProfileDermatologist from './components/Profile/ProfileDermatologist';
 import ProfilePatient from './components/Profile/ProfilePatient';
 import "./uploadToFirestore";
-import Dashboard from './components/Dashboard/Dashboard';
 import AllDermatologists from "./components/AllDermatologists/AllDermatologists";
 
 function App() {
@@ -73,7 +72,6 @@ function AppContent() {
         <Route path='/booknow' element={<BookNow />} />
         <Route path='/profiledermatologist' element={<ProfileDermatologist logout={logout} handleProfileClick={handleProfileClick} isProfileOpen={isProfileOpen}/>} />
         <Route path='/profilepatient' element={<ProfilePatient user={user} logout={logout} handleProfileClick={handleProfileClick} isProfileOpen={isProfileOpen} />} />
-        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/all-dermatologists" element={<AllDermatologists />} />
       </Routes>
 

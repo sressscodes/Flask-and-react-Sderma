@@ -52,7 +52,7 @@ const ProfilePatient = ({ user, logout }) => {
             </div>
             <h1>Welcome, {name}!</h1>
             <p><strong>Username: </strong>{name}</p>
-            <p><strong>Name: </strong>{user?.given_name && user?.family_name ? `${user.given_name} ${user.family_name}` : "Name"}</p>
+            <p><strong>Name: </strong>{user?.given_name && user?.family_name ? `${user.given_name} ${user.family_name}` : user?.nickname || "Name"}</p>
             <p><strong>Email: </strong>{user?.email || "User email "}</p>
           </div>
         )}

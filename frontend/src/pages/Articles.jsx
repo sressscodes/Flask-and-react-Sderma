@@ -1,53 +1,57 @@
 import React, { useState } from 'react';
 import './CSS/Articles.css'; // Import the external CSS file
 import image1 from '../assets/image1.png'
+import howtoidentifyskintype from '../assets/howtoidentifyskintype.jpg'
+import Skincareinacnemanagement from '../assets/Skincareinacnemanagement.png'
+import WhySunscreenisaMustAllYearRound from '../assets/WhySunscreenisaMustAllYearRound.png'
+import TopFoodsforHealthyGlowingSkin from '../assets/TopFoodsforHealthyGlowingSkin.png'
 
 const articleData = [
   {
     title: "How to Identify Your Skin Type",
-    url: image1,
+    url: howtoidentifyskintype,
     img: "/static/images/image5.png",
     description: "Find out the best ways to determine your skin type and choose products accordingly."
   },
   {
     title: "Skin care in acne management",
-    url: image1,
+    url: Skincareinacnemanagement,
     img: "/static/images/image6.png",
     description: "Discover the truth behind skincare and acne and other conditions management."
   },
   {
     title: "Why Sunscreen is a Must All Year Round",
-    url: image1,
+    url: WhySunscreenisaMustAllYearRound,
     img: "/static/images/image7.png",
     description: "Understand the importance of using sunscreen every day, no matter the season."
   },
   {
     title: "Top Foods for Healthy, Glowing Skin",
-    url: image1,
+    url: TopFoodsforHealthyGlowingSkin,
     img: "/static/images/image8.png",
     description: "Learn how your diet impacts your skin and which foods promote healthy skin."
   },
   {
     title: "How to Identify Your Skin Type",
-    url: image1,
+    url: howtoidentifyskintype,
     img: "/static/images/image5.png",
     description: "Find out the best ways to determine your skin type and choose products accordingly."
   },
   {
     title: "Skin care in acne management",
-    url: image1,
+    url: Skincareinacnemanagement,
     img: "/static/images/image6.png",
     description: "Discover the truth behind skincare and acne and other conditions management."
   },
   {
     title: "Why Sunscreen is a Must All Year Round",
-    url: image1,
+    url: WhySunscreenisaMustAllYearRound,
     img: "/static/images/image7.png",
     description: "Understand the importance of using sunscreen every day, no matter the season."
   },
   {
     title: "Top Foods for Healthy, Glowing Skin",
-    url: image1,
+    url: TopFoodsforHealthyGlowingSkin,
     img: "/static/images/image8.png",
     description: "Learn how your diet impacts your skin and which foods promote healthy skin."
   }

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./Sidebar.css";
+import ProfileForm from"../ProfileForm/ProfileForm"; // import the form
 
-const Sidebar = ({ activeSection, setActiveSection, handleResetProfile, logout }) => {
+const Sidebar = ({ activeSection, setActiveSection, logout }) => {
   const [role, setRole] = useState("");
+  const [isProfileOpen, setIsProfileOpen] = useState(false); // new state
 
   useEffect(() => {
     const userProfile = JSON.parse(localStorage.getItem("userProfile"));
@@ -10,6 +12,11 @@ const Sidebar = ({ activeSection, setActiveSection, handleResetProfile, logout }
       setRole(userProfile.role);
     }
   }, []);
+
+  // Handle Reset Profile
+  const handleResetProfile = () => {
+    setIsProfileOpen(true); // open the form
+  };
 
   return (
     <div className="sidebar">
@@ -30,6 +37,9 @@ const Sidebar = ({ activeSection, setActiveSection, handleResetProfile, logout }
         <li className="reset" onClick={handleResetProfile}>Reset Profile</li>
         <li className="logout" onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>Logout</li>
       </ul>
+
+      {/* Profile Modal */}
+      {isProfileOpen && <ProfileForm setIsProfileOpen={setIsProfileOpen} />}
     </div>
   );
 };
